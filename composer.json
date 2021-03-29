@@ -1,0 +1,12 @@
+{
+    "name": "ibu/carlook",
+    "description": "Car look best price finder for a car course",
+    "license": "Apache2",
+    "authors": [
+        {
+            "name": "KerimCeljo",
+            "email": "kerim.celjo@stu.ibu.edu.ba"
+        }
+    ],
+    "require": {}
+}
