@@ -4,12 +4,12 @@ require_once dirname(__FILE__)."/../config.php";
 
 class BaseDao{
 
-  protected $connection;
+protected $connection;
 
+private $table;
 
-public function __construct(){
-
-
+public function__construct($table){
+$this->table=$table;
 try {
   $this->$connection = new PDO("mysql:host=".Config::DB_HOST.";dbname=".Config::DB_SCHEME, Config:: DB_USERNAME, Config::DB_PASSWORD);
   // set the PDO error mode to exception
@@ -23,7 +23,7 @@ try {
 
 }
 
-public function insert($table, $entity ){
+protected function insert($table, $entity ){
   $query= "INSERT INTO ${table} (";
   foreach ($user1 as $column => $value) {
     $query .= $column.", ";
@@ -43,8 +43,13 @@ return $entity;
 
 
 }
+protected function execute_update($table, $id, $entity, $id_column="id"){
 
-public function update($table, $id, $entity, $id_column= "id"){
+
+}
+
+
+protected function update($table, $id, $entity, $id_column= "id"){
   $query= "UPDATE ${table} SET";
   foreach ($entity as $name => $value) {
     $query .=$name ."= :". $name. ", ";
@@ -61,7 +66,7 @@ public function update($table, $id, $entity, $id_column= "id"){
 
 }
 
-public function query($query, $params){
+protected function query($query, $params){
  $stmt = $pdo->prepare($query);
  $stmt->execute($params);
  return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -70,14 +75,26 @@ public function query($query, $params){
 
 }
 
-public function query_unique($query, $params){
+protected function query_unique($query, $params){
   $results = $$this->query($query, $params);
   return reset($results);
 
 }
+public function add($entity){
+  return $this-> insert($this->table.$entity);
 
 }
 
+public function update($id, $entity){
+  $this->execute_update ($this->table ,$id, $entity);
 
+
+}
+public function get_by_id($id){
+return $this-> query_unique("SELECT * FROM $($this->table) WHERE id = :id", ["id" => $id]);
+ }
+
+ 
+}
 
  ?>

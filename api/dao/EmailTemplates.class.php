@@ -1,15 +1,16 @@
 <?php
 
-require_once dirname(__FILE__)."/BaseDao.class.php";
+require_once dirname(__FILE__). "/BaseDao.class.php";
 
-class AccountDao extends BaseDao{
+class EmailTemplateDao extends BaseDao{
 
-  public function__construct(){
-    parent::__construct("accounts");
-  }
+public function__construct(){
+parent::__construct("email_templates")
+
+}
 
 
-  public function add_account($account){
+public function add_account($account){
  return $this->insert("accounts", $account);
 
   }
@@ -23,8 +24,7 @@ public function get_account_by_id(){
 }
 public function get_all_accounts(){
   return $$this->query("SELECT * FROM accounts",[]);
-}
-
+ }
 
 }
  ?>

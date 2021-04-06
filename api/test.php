@@ -10,7 +10,9 @@ $dao = new AccountDao();
 //$account= $dao-> get_all_accounts(1);
 $account= $dao-> update_account(1,["name"=>"IBU"]);
 $account=$dao-> get_all_accounts();
-$dao->add_account([
+
+
+$dao->add([
 "name"=>"Green Hosting",
 "created_at"=>date("Y-m-d H:i:s")
 
