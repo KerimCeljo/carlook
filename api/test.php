@@ -7,12 +7,13 @@ $user_dao= ew UserDao();
 
 $user1=[
 "name"=> "Faris Bektas",
-"email"=> "faris.bektars@stu.ibu.edu.ba",
-"password"=>"1234",
+"email"=> "faris.fares@stu.ibu.edu.ba",
+"password"=>"14",
 "account_id" => 1
 
 ];
-$user_dao->update_user(11,$user1);
+
+$user = $user_dao->update_user(11,$user1);
 //get_user_by_email("kerim.celjo20@gmail.com");
 
 print_r($user);
