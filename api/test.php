@@ -11,9 +11,12 @@ $user1=[
 "password"=>"14",
 "account_id" => 1
 
+
+
 ];
 
 $user = $user_dao->update_user(11,$user1);
+$user = $user_dao->update_user_by_email("faris.fare@stu.ibu.edu.ba",$user1);
 //get_user_by_email("kerim.celjo20@gmail.com");
 
 print_r($user);
