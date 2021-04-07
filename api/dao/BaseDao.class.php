@@ -44,7 +44,17 @@ return $entity;
 
 }
 protected function execute_update($table, $id, $entity, $id_column="id"){
+  $query ="UPDATE" ${table} SET ";
+  foreach ($entity as $name => $value) {
+    $query .=$name ."= :". $name. ", ";
 
+  }
+$query =substr($query, 0, -2);
+$query .= WHERE ${$id_column} = :id";
+
+$stmt = $this->connection->prepare($query);
+$entity['id']= $id;
+$stmt->execute($entity);
 
 }
 
@@ -94,7 +104,7 @@ public function get_by_id($id){
 return $this-> query_unique("SELECT * FROM $($this->table) WHERE id = :id", ["id" => $id]);
  }
 
- 
+
 }
 
  ?>
