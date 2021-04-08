@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 
 require_once dirname(__FILE__)."/dao/BaseDao.class.php";
 
-$becirovic= new BaseDao();
+$becirovic = new BaseDao();
 
 echo "Heloo from api";
 
