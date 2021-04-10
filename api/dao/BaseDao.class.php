@@ -5,7 +5,7 @@ require_once dirname(__FILE__)."/../config.php";
 
 class BaseDao{
 
- public $connection;
+ private $connection;
 
  //private $table;
 
@@ -17,7 +17,7 @@ class BaseDao{
     echo "Connected successfully ";
   } catch(PDOException $e) {
     throw $e;
-    echo "Connection failed: " . $e->getMessage();
+
   }
 }
 //$this->table=$table;
@@ -91,18 +91,17 @@ public function query($query, $params){
 
    $stmt = $this->connection->prepare($query);
    $stmt->execute($params);
-   return $stmt->fetchAll();
-   //PDO::FETCH_ASSOC
+   return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-}
-
-public function query_unique(){
-//$query, $params
-//  $results = $this->query($query, $params);
-//  return reset($results);
 
 }
+
+public function query_unique($query, $params){
+ $results = $this->query($query, $params);
+ return reset($results);
+}
+
 public function add(){
   /*$entity
   return $this->insert($this->table,$entity);
