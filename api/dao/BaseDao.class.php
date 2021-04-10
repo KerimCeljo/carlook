@@ -5,7 +5,7 @@ require_once dirname(__FILE__)."/../config.php";
 
 class BaseDao{
 
- private $connection;
+ public $connection;
 
  //private $table;
 
@@ -52,7 +52,7 @@ return $entity;
 */
 
 }
-protected function execute_update(){
+ public function execute_update(){
 /*
   $table, $id, $entity, $id_column="id"
   $query = "UPDATE ${table} SET ";
@@ -91,15 +91,16 @@ public function query($query, $params){
 
    $stmt = $this->connection->prepare($query);
    $stmt->execute($params);
-   return $stmt->fetchAll(PDO::FETCH_ASSOC);
+   return $stmt->fetchAll();
+   //PDO::FETCH_ASSOC
 
 
 }
 
-public function query_unique($query, $params){
-
-  $results = $this->query($query, $params);
-  return reset($results);
+public function query_unique(){
+//$query, $params
+//  $results = $this->query($query, $params);
+//  return reset($results);
 
 }
 public function add(){
@@ -108,11 +109,11 @@ public function add(){
 */
 }
 
-//public function update(){}
+//public function update(){
  /*$id, $entity
   $this->executeUpdate ($this->table ,$id, $entity);
 */
-
+//}
 
 public function get_by_id(){
 /*  $id
