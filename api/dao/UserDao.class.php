@@ -19,16 +19,17 @@ class UserDao extends BaseDao{
    return $this->query_unique("SELECT * FROM users WHERE id = :id", ["id" => $id]);
 
 }
- //public function add_user($user){
-  // $sql = "INSERT INTO users (name, email, password, account_id) VALUES (:name, :email, :password, :account_id)";
-   //$stmt= $this->connection->prepare($sql);
-   //$stmt->execute($user);
-//return $this-> insert("users",$user);
-//}
 
- //public function update_user($id, $user){
+ public function add_user($user){
+   $sql = "INSERT INTO users (name, email, password, account_id) VALUES (:name, :email, :password, :account_id)";
+   $stmt= $this->connection->prepare($sql);
+   $stmt->execute($user);
+//return $this-> insert("users",$user);
+}
+
+ public function update_user($id, $user){
    //$this->update("users", $id, $user);
-//}
+}
 
 /*public function update_user_by_email($email, $user){
    $this->update("users", $email, $user, "email");

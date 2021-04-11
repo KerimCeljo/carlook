@@ -9,7 +9,7 @@ class AccountDao extends BaseDao{
   }
 */
 
-  public function add_account($account){
+  public function add_account($accounts){
 // return $this->insert("accounts", $account);
 
   }
